@@ -2,35 +2,38 @@
 
 using namespace std;
 
-enum enNumberType {Odd = 1, Even = 2};
-
-int readNumber()
+struct stInfo
 {
-	int number;
+	short age;
+	bool hasDrivingLicense;
+};
 
-	cout << "Please enter a number: " << endl;
-	cin >> number;
+stInfo readInfo()
+{
+	stInfo info;
 
-	return number;
+	cout << "Enter your age? \n";
+	cin >> info.age;
+	cout << "Do you have a driving licence? \n";
+	cin >> info.hasDrivingLicense;
+
+	return info;
 }
 
-enNumberType checkNumberType(int number)
+bool isAccepted(stInfo info)
 {
-	if (number % 2 == 0)
-		return enNumberType::Even;
-	else
-		return enNumberType::Odd;
+	return (info.age >= 21 && info.hasDrivingLicense);
 }
 
-void printNumberType(enNumberType numberType)
+void printResult(stInfo info)
 {
-	if (numberType == enNumberType::Even)
-		cout << "The number is Even. \n";
+	if (isAccepted(info))
+		cout << "Hired." << endl;
 	else
-		cout << "The number is Odd. \n";
+		cout << "Rejected." << endl;
 }
 
 int main()
 {
-	printNumberType(checkNumberType(readNumber()));
+	printResult(readInfo());
 }
