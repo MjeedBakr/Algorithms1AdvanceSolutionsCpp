@@ -1,24 +1,36 @@
 #include <iostream>
-#include <string>
 
 using namespace std;
 
-string readName()
+enum enNumberType {Odd = 1, Even = 2};
+
+int readNumber()
 {
-    string name;
+	int number;
 
-    cout << "Please Enter your name: \n";
-    getline(cin, name);
+	cout << "Please enter a number: " << endl;
+	cin >> number;
 
-    return name;
+	return number;
 }
 
-void printName(string name)
+enNumberType checkNumberType(int number)
 {
-    cout << "Your name is: " << name << endl;
+	if (number % 2 == 0)
+		return enNumberType::Even;
+	else
+		return enNumberType::Odd;
+}
+
+void printNumberType(enNumberType numberType)
+{
+	if (numberType == enNumberType::Even)
+		cout << "The number is Even. \n";
+	else
+		cout << "The number is Odd. \n";
 }
 
 int main()
 {
-    printName(readName());
+	printNumberType(checkNumberType(readNumber()));
 }
