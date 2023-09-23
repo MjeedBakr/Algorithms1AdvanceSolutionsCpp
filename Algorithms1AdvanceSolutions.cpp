@@ -1,39 +1,28 @@
 #include <iostream>
+#include <string>
 
 using namespace std;
 
-struct stInfo
+int readNumber()
 {
-	string firstName;
-	string lastName;
-};
+	int number;
+	cout << "Enter a number: \n";
+	cin >> number;
 
-stInfo readInfo()
-{
-	stInfo info;
-
-	cout << "Enter your first name: \n";
-	cin >> info.firstName;
-	cout << "Enter your last name: \n";
-	cin >> info.lastName;
-
-	return info;
+	return number;
 }
 
-string getFullName(stInfo info, bool isReversed)
+float calcHalfNumber(int number)
 {
-	if (isReversed)
-		return info.lastName + " " + info.firstName;
-	else
-		return info.firstName + " " + info.lastName;
+	return (float)number / 2;
 }
 
-void printFullName(string fullName)
+void printResult(int number)
 {
-	cout << "Your full name is: " << fullName << endl;
+	string result = "Half of " + to_string(number) + " is " + to_string(calcHalfNumber(number));
+	cout << result << endl;
 }
 int main()
 {
-	printFullName(getFullName(readInfo(), false));
-	printFullName(getFullName(readInfo(), true));
+	printResult(readNumber());
 }
