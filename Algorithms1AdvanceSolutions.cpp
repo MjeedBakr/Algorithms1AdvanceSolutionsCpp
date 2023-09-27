@@ -2,33 +2,29 @@
 
 using namespace std;
 
-enum enPassFail {Pass = 1, Fail = 2};
-
-int readMark()
+void readNumbers(int& num1, int& num2, int &num3)
 {
-	short mark;
-	cout << "Please Enter your mark? " << endl;
-
-	cin >> mark;
-	return mark;
+	cout << "Enter your first number: ";
+	cin >> num1;
+	cout << "Enter your second number: ";
+	cin >> num2;
+	cout << "Enter your third number: ";
+	cin >> num3;
 }
 
-enPassFail checkMark(short mark)
+int sumOf3Numbers(int num1, int num2, int num3)
 {
-	if (mark >= 50)
-		return enPassFail::Pass;
-	else
-		return enPassFail::Fail;
+	return num1 + num2 + num3;
 }
 
-void printResult(int mark)
+void printResult(int sum)
 {
-	if (checkMark(mark) == enPassFail::Pass)
-		cout << "You Passed" << endl;
-	else
-		cout << "You Faild" << endl;
+	cout << "\nThe sum of 3 numbers = " << sum << endl;
 }
+
 int main()
 {
-	printResult(readMark());
+	int num1, num2, num3;
+	readNumbers(num1, num2, num3);
+	printResult(sumOf3Numbers(num1, num2, num3));
 }
