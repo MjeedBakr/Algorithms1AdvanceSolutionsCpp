@@ -4,47 +4,31 @@ using namespace std;
 
 enum enPassFail {Pass = 1, Fail = 2};
 
-void readNumbers(int& mark1, int& mark2, int &mark3)
+void readNumbers(int& num1, int& num2)
 {
-	cout << "Enter your first mark: ";
-	cin >> mark1;
-	cout << "Enter your second mark: ";
-	cin >> mark2;
-	cout << "Enter your third mark: ";
-	cin >> mark3;
+	cout << "Enter your first number: ";
+	cin >> num1;
+	cout << "Enter your second number: ";
+	cin >> num2;
+
 }
 
-int sumOf3Marks(int mark1, int mark2, int mark3)
+int maxOf2Numbers(int num1, int num2)
 {
-	return mark1 + mark2 + mark3;
-}
-
-int clacAverage(int mark1, int mark2, int mark3)
-{
-	return (float)sumOf3Marks(mark1, mark2, mark3) / 3;
-}
-
-enPassFail checkAverage(float average)
-{
-	if (average > 50)
-		return enPassFail::Pass;
+	if (num1 > num2)
+		return num1;
 	else
-		return enPassFail::Fail;
+		return num2;
 }
 
-void printResult(int average)
+void printResult(int maxNumber)
 {
-	cout << "\nThe average of 3 marks is = " << average << endl;
-
-	if (checkAverage(average) == enPassFail::Pass)
-		cout << "You Passed!" << endl;
-	else
-		cout << "You Failed." << endl;
+	cout << "The maximun number is: " << maxNumber << endl;
 }
 
 int main()
 {
-	int mark1, mark2, mark3;
-	readNumbers(mark1, mark2, mark3);
-	printResult(clacAverage(mark1, mark2, mark3));
+	int num1, num2;
+	readNumbers(num1, num2);
+	printResult(maxOf2Numbers(num1, num2));
 }
