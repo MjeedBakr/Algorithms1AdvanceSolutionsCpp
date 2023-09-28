@@ -2,39 +2,36 @@
 
 using namespace std;
 
-void readNumbers(int& num1, int& num2, int& num3)
+void readNumbers(int& num1, int& num2)
 {
 	cout << "Enter your first number: ";
 	cin >> num1;
 	cout << "Enter your second number: ";
 	cin >> num2;
-	cout << "Enter your third number: ";
-	cin >> num3;
-
 }
 
-int maxOf3Numbers(int num1, int num2, int num3)
+void swapNumbers(int& A, int& B)
 {
-	if (num1 > num2)
-		if (num1 > num3)
-			return num1;
-		else
-			return num3;
-	else
-		if (num2 > num3)
-			return num2;
-		else
-			return num3;
+	int temp = A;
+	A = B;
+	B = temp;
 }
 
-void printResult(int maxNumber)
+void printNumbers(int num1, int num2)
 {
-	cout << "The maximun number is: " << maxNumber << endl;
+	cout << "The number 1 is: " << num1 << endl;
+	cout << "The number 2 is: " << num2 << endl;
 }
 
 int main()
 {
-	int num1, num2, num3;
-	readNumbers(num1, num2, num3);
-	printResult(maxOf3Numbers(num1, num2, num3));
+	int num1, num2;
+	readNumbers(num1, num2);
+	cout << "Before swapping: \n";
+	printNumbers(num1, num2);
+	swapNumbers(num1, num2);
+
+	cout << "After swapping: \n";
+	printNumbers(num1, num2);
+
 }
