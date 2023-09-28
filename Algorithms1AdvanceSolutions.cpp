@@ -2,21 +2,21 @@
 #include <string>
 using namespace std;
 
-float readRadious()
+float readDiameter()
 {
-	float r;
+	float d;
 
-	cout << "Please enter radious R: ";
-	cin >> r;
+	cout << "Please enter diameter d: ";
+	cin >> d;
 
-	return r;
+	return d;
 }
 
-float calcCircleArea(float r)
+float calcCircleAreaByDiameter(float d)
 {
 	const float PI = 3.141592653589793238;
 
-	float area = PI * pow(r, 2);
+	float area = (pow(d, 2) * PI) / 4;
 	return area;
 }
 
@@ -27,5 +27,5 @@ void printArea(float area)
 
 int main()
 {
-	printArea(calcCircleArea(readRadious()));
+	printArea(calcCircleAreaByDiameter(readDiameter()));
 }
