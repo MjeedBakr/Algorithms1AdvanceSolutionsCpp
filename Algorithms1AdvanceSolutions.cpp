@@ -1,30 +1,31 @@
 #include <iostream>
-
+#include <string>
 using namespace std;
 
-void readNumbers(float &a, float &h)
+float readRadious()
 {
-	cout << "Enter triangle base a: ";
-	cin >> a;
-	cout << "Enter triangle height h: ";
-	cin >> h;
+	float r;
+
+	cout << "Please enter radious R: ";
+	cin >> r;
+
+	return r;
 }
 
-float calcTrangleArea(float base, float height)
+float calcCircleArea(float r)
 {
-	float area = (base/2) * height;
+	const float PI = 3.141592653589793238;
+
+	float area = PI * pow(r, 2);
 	return area;
 }
 
-void printNumbers(float area)
+void printArea(float area)
 {
-	cout << "Triangle Area = " << area << endl;
+	cout << "Circle Area = " << area << endl;
 }
 
 int main()
 {
-	float num1, num2;
-	readNumbers(num1, num2);
-	printNumbers(calcTrangleArea(num1, num2));
-
+	printArea(calcCircleArea(readRadious()));
 }
