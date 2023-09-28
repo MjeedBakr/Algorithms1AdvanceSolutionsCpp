@@ -2,17 +2,17 @@
 #include <string>
 using namespace std;
 
-float readDiameter()
+float readSquareSide()
 {
 	float d;
 
-	cout << "Please enter diameter d: ";
+	cout << "Please enter square side d: ";
 	cin >> d;
 
 	return d;
 }
 
-float calcCircleAreaByDiameter(float d)
+float calcCircleAreaInscribedInSquare(float d)
 {
 	const float PI = 3.141592653589793238;
 
@@ -22,10 +22,11 @@ float calcCircleAreaByDiameter(float d)
 
 void printArea(float area)
 {
-	cout << "Circle Area = " << area << endl;
+	cout << "Circle Area Inscribed in square = " << area << endl;
 }
 
 int main()
 {
-	printArea(calcCircleAreaByDiameter(readDiameter()));
+	printArea(calcCircleAreaInscribedInSquare(readSquareSide()));
+	return 0;
 }
