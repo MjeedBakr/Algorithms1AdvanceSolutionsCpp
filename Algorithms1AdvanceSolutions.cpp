@@ -2,17 +2,18 @@
 
 using namespace std;
 
-void readNumbers(float &w, float &l)
+void readNumbers(float &s, float &d)
 {
-	cout << "Enter rectangle width: ";
-	cin >> w;
-	cout << "Enter rectangle length: ";
-	cin >> l;
+	cout << "Enter rectangle side S: ";
+	cin >> s;
+	cout << "Enter rectangle diagonal D: ";
+	cin >> d;
 }
 
-float calcRectangleArea(float width, float length)
+float calcRectangleAreaBySideAndDiagonal(float side, float diagonal)
 {
-	return width * length;
+	float area = side * sqrt(pow(d, 2) - pow(a, 2));
+	return area;
 }
 
 void printNumbers(float area)
@@ -24,6 +25,6 @@ int main()
 {
 	float num1, num2;
 	readNumbers(num1, num2);
-	printNumbers(calcRectangleArea(num1, num2));
+	printNumbers(calcRectangleAreaBySideAndDiagonal(num1, num2));
 
 }
