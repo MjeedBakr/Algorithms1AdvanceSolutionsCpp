@@ -2,36 +2,28 @@
 
 using namespace std;
 
-void readNumbers(int& num1, int& num2)
+void readNumbers(float &w, float &l)
 {
-	cout << "Enter your first number: ";
-	cin >> num1;
-	cout << "Enter your second number: ";
-	cin >> num2;
+	cout << "Enter rectangle width: ";
+	cin >> w;
+	cout << "Enter rectangle length: ";
+	cin >> l;
 }
 
-void swapNumbers(int& A, int& B)
+float calcRectangleArea(float width, float length)
 {
-	int temp = A;
-	A = B;
-	B = temp;
+	return width * length;
 }
 
-void printNumbers(int num1, int num2)
+void printNumbers(float area)
 {
-	cout << "The number 1 is: " << num1 << endl;
-	cout << "The number 2 is: " << num2 << endl;
+	cout << "Rectangle Area = " << area << endl;
 }
 
 int main()
 {
-	int num1, num2;
+	float num1, num2;
 	readNumbers(num1, num2);
-	cout << "Before swapping: \n";
-	printNumbers(num1, num2);
-	swapNumbers(num1, num2);
-
-	cout << "After swapping: \n";
-	printNumbers(num1, num2);
+	printNumbers(calcRectangleArea(num1, num2));
 
 }
