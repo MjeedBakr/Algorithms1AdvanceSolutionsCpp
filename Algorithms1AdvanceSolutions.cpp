@@ -2,35 +2,30 @@
 #include <string>
 using namespace std;
 
-int readNumber()
+int readNumberInRange(int from, int to)
 {
-	int number;
-	cout << "Please enter a number: ";
-	cin >> number;
+	int grade;
+	do
+	{
+		cout << "Please enter your grade between 0 and 100: \n";
+		cin >> grade;
+	} while (grade < from || grade > to);
 
-	return number;
+	return grade;
 }
 
-int readPower()
+char getGradeLetter(int grade)
 {
-	int power;
-	cout << "Please enter the power: ";
-	cin >> power;
-
-	return power;
-}
-
-int powerOfM(int number, int m)
-{
-	if (m == 0)
-		return 0;
-
-	int p = 1;
-
-	for (int i = 1; i <= m; i++)
-		p = p * number;
-
-	return p;
+	if (grade >= 90)
+		return 'A';
+	else if (grade >= 80)
+		return 'B';
+	else if (grade >= 70)
+		return 'C';
+	else if (grade >= 60)
+		return 'D';
+	else
+		return 'F';
 }
 
 
@@ -39,6 +34,6 @@ int powerOfM(int number, int m)
 
 int main()
 {
-	cout << "Result = " << powerOfM(readNumber(), readPower());
+	cout << "Result = " << getGradeLetter(readNumberInRange(0, 100));
 	return 0;
 }
