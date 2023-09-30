@@ -2,33 +2,31 @@
 #include <string>
 using namespace std;
 
-int readPositiveNumber(string message)
+int readNumber()
 {
 	int number;
-	do
-	{
-	cout << message;
+	cout << "Please enter a number: ";
 	cin >> number;
-	} while (number < 0);
 
 	return number;
 }
 
-int factorial(int N)
+void powerOf2_3_4(int number)
 {
-	int F = 1;
-	for (int counter = N; counter >= 1; counter--)
-		F = F * counter;
+	int a, b, c;
 
-	return F;
+	a = number * number;
+	b = number * number * number;
+	c = number * number * number * number;
+	cout << a << " " << b << " " << c;
 }
+
+
 
 
 
 int main()
 {
-	cout << "Factorial = " << factorial(readPositiveNumber("Enter a positive number: "));
-
-
+	powerOf2_3_4(readNumber());
 	return 0;
 }
