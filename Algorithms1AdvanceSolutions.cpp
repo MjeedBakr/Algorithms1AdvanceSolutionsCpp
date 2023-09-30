@@ -2,31 +2,31 @@
 #include <string>
 using namespace std;
 
-float readSquareSide()
+float readCircumference()
 {
 	float d;
 
-	cout << "Please enter square side d: ";
+	cout << "Please enter Circumference d: ";
 	cin >> d;
 
 	return d;
 }
 
-float calcCircleAreaInscribedInSquare(float d)
+float calcCircleAreaByCircumference(float d)
 {
 	const float PI = 3.141592653589793238;
 
-	float area = (pow(d, 2) * PI) / 4;
+	float area = pow(d, 2) / (PI * 4);
 	return area;
 }
 
 void printArea(float area)
 {
-	cout << "Circle Area Inscribed in square = " << area << endl;
+	cout << "Circle Area = " << area << endl;
 }
 
 int main()
 {
-	printArea(calcCircleAreaInscribedInSquare(readSquareSide()));
+	printArea(calcCircleAreaByCircumference(readCircumference()));
 	return 0;
 }
