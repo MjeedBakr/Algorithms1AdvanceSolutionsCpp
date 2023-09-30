@@ -2,21 +2,19 @@
 #include <string>
 using namespace std;
 
-float readCircumference()
+void readTriangleData(float& a, float& b)
 {
-	float d;
-
-	cout << "Please enter Circumference d: ";
-	cin >> d;
-
-	return d;
+	cout << "Please enter triangle side A: ";
+	cin >> a;
+	cout << "Please enter triangle Base B: ";
+	cin >> b;
 }
 
-float calcCircleAreaByCircumference(float d)
+float circleAreaByITriangle(float a, float b)
 {
 	const float PI = 3.141592653589793238;
 
-	float area = pow(d, 2) / (PI * 4);
+	float area = PI * (pow(b, 2) / 4) * ((2 * a - b) / (2 * a + b));
 	return area;
 }
 
@@ -27,6 +25,9 @@ void printArea(float area)
 
 int main()
 {
-	printArea(calcCircleAreaByCircumference(readCircumference()));
+	float a, b;
+	readTriangleData(a, b);
+	printArea(circleAreaByITriangle(a, b));
+
 	return 0;
 }
