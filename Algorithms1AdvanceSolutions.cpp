@@ -11,14 +11,26 @@ int readNumber()
 	return number;
 }
 
-void powerOf2_3_4(int number)
+int readPower()
 {
-	int a, b, c;
+	int power;
+	cout << "Please enter the power: ";
+	cin >> power;
 
-	a = number * number;
-	b = number * number * number;
-	c = number * number * number * number;
-	cout << a << " " << b << " " << c;
+	return power;
+}
+
+int powerOfM(int number, int m)
+{
+	if (m == 0)
+		return 0;
+
+	int p = 1;
+
+	for (int i = 1; i <= m; i++)
+		p = p * number;
+
+	return p;
 }
 
 
@@ -27,6 +39,6 @@ void powerOf2_3_4(int number)
 
 int main()
 {
-	powerOf2_3_4(readNumber());
+	cout << "Result = " << powerOfM(readNumber(), readPower());
 	return 0;
 }
