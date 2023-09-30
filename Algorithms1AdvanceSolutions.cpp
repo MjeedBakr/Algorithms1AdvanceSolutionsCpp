@@ -11,45 +11,45 @@ int readNumber()
 	return number;
 }
 
-void printRangeFrom1ToN_usingWhile(int N)
+void printRangeFromNto1_usingWhile(int N)
 {
-	int counter = 0;
+	int counter = N + 1;
 
 	cout << "Range using while statement: \n";
-	while (counter < N)
+	while (counter > 1)
 	{
-		counter++;
+		counter--;
 		cout << counter << endl;
 	}
 }
 
-void printRangeFrom1ToN_usingDoWhile(int N)
+void printRangeFromNto1_usingDoWhile(int N)
 {
-	int counter = 0;
-	cout << "Range using do while statement: \n";
+	int counter = N + 1;
+	cout << "Range using do..while statement: \n";
 
 	do
 	{
-		counter++;
+		counter--;
 		cout << counter << endl;
 
-	} while (counter < N);
+	} while (counter > 1);
 }
 
-void printRangeFrom1ToN_usingFor(int N)
+void printRangeFromNto1_usingFor(int N)
 {
 	cout << "Range using for loop statement: \n";
 
-	for (int counter = 1; counter <= N; counter++)
+	for (int counter = N; counter >= 1; counter--)
 		cout << counter << endl;
 }
 
 int main()
 {
 	int N = readNumber();
-	printRangeFrom1ToN_usingWhile(N);
-	printRangeFrom1ToN_usingDoWhile(N);
-	printRangeFrom1ToN_usingFor(N);
+	printRangeFromNto1_usingWhile(N);
+	printRangeFromNto1_usingDoWhile(N);
+	printRangeFromNto1_usingFor(N);
 
 
 	return 0;
