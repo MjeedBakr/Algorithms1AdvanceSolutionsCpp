@@ -2,39 +2,30 @@
 #include <string>
 using namespace std;
 
-void readTriangleData(float& a, float& b, float& c)
+int readAge()
 {
-	cout << "Please enter triangle side A: ";
-	cin >> a;
-	cout << "Please enter triangle Base B: ";
-	cin >> b;
-	cout << "Please enter triangle side C: ";
-	cin >> c;
+	short age;
+	cout << "Please enter your age: ";
+	cin >> age;
+
+	return (int)age;
 }
 
-float circleAreaByATriangle(float a, float b, float c)
+bool validateNumberInRange(int number, int from, int to)
 {
-	const float PI = 3.141592653589793238;
-	float P = (a + b + c) / 2;
-
-	float T;
-	T = (a * b * c) / (4 * sqrt(P * (P - a) * (P - b) * (P - c)));
-
-
-	float area = PI * pow(T, 2);
-	return area;
+	return (number >= from && number <= to);
 }
 
-void printArea(float area)
+void printResult(int age)
 {
-	cout << "Circle Area = " << area << endl;
+	if (validateNumberInRange(age, 18, 65))
+		cout << age << " is a valid age";
+	else
+		cout << age << " is invalid age";
 }
 
 int main()
 {
-	float a, b, c;
-	readTriangleData(a, b, c);
-	printArea(circleAreaByATriangle(a, b, c));
-
+	printResult(readAge());
 	return 0;
 }
