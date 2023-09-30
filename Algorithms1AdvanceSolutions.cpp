@@ -2,6 +2,7 @@
 #include <string>
 using namespace std;
 
+enum enOddOrEven {Odd = 1, Even = 2};
 int readNumber()
 {
 	int number;
@@ -11,45 +12,64 @@ int readNumber()
 	return number;
 }
 
-void printRangeFromNto1_usingWhile(int N)
+enOddOrEven checkOddOrEven(int number)
 {
-	int counter = N + 1;
-
-	cout << "Range using while statement: \n";
-	while (counter > 1)
-	{
-		counter--;
-		cout << counter << endl;
-	}
+	if (number % 2 == 0)
+		return enOddOrEven::Even;
+	else
+		return enOddOrEven::Odd;
 }
 
-void printRangeFromNto1_usingDoWhile(int N)
+int sumOddNumbersFrom1ToN_usingWhile(int N)
 {
-	int counter = N + 1;
-	cout << "Range using do..while statement: \n";
+	int counter = 0;
+	int sum = 0;
+
+	cout << "Sum using while statement: \n";
+	while (counter < N)
+	{
+		counter++;
+		if (checkOddOrEven(counter) == enOddOrEven::Odd)
+			sum += counter;
+	}
+	return sum;
+}
+
+int sumOddNumbersFrom1ToN_usingDoWhile(int N)
+{
+	int counter = 0;
+	int sum = 0;
+	cout << "sum using do..while statement: \n";
 
 	do
 	{
-		counter--;
-		cout << counter << endl;
+		counter++;
+		if (checkOddOrEven(counter) == enOddOrEven::Odd)
+			sum += counter;
 
-	} while (counter > 1);
+	} while (counter < N);
+	return sum;
 }
 
-void printRangeFromNto1_usingFor(int N)
+int sumOddNumbersFrom1ToN_usingFor(int N)
 {
-	cout << "Range using for loop statement: \n";
-
-	for (int counter = N; counter >= 1; counter--)
-		cout << counter << endl;
+	cout << "sum using for loop statement: \n";
+	int sum = 0;
+	for (int counter = 1; counter <= N; counter++)
+	{
+		if (checkOddOrEven(counter) == enOddOrEven::Odd)
+			sum += counter;
+	}
+	return sum;
 }
 
 int main()
 {
 	int N = readNumber();
-	printRangeFromNto1_usingWhile(N);
-	printRangeFromNto1_usingDoWhile(N);
-	printRangeFromNto1_usingFor(N);
+
+	cout << sumOddNumbersFrom1ToN_usingWhile(N) << endl;
+	cout << sumOddNumbersFrom1ToN_usingDoWhile(N) << endl;
+	cout << sumOddNumbersFrom1ToN_usingFor(N) << endl;
 
 
 	return 0;
