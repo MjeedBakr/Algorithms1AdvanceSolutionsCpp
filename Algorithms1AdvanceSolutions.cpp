@@ -16,6 +16,19 @@ bool validateNumberInRange(int number, int from, int to)
 	return (number >= from && number <= to);
 }
 
+int readUntilAgeBetween(int from, int to)
+{
+	int age = 0;
+
+	do
+	{
+		age = readAge();
+
+	} while (!validateNumberInRange(age, from, to));
+
+	return age;
+}
+
 void printResult(int age)
 {
 	if (validateNumberInRange(age, 18, 65))
@@ -26,6 +39,6 @@ void printResult(int age)
 
 int main()
 {
-	printResult(readAge());
+	printResult(readUntilAgeBetween(18, 45));
 	return 0;
 }
