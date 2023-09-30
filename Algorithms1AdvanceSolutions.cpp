@@ -2,43 +2,55 @@
 #include <string>
 using namespace std;
 
-int readAge()
+int readNumber()
 {
-	short age;
-	cout << "Please enter your age: ";
-	cin >> age;
+	int number;
+	cout << "Please enter your number: ";
+	cin >> number;
 
-	return (int)age;
+	return number;
 }
 
-bool validateNumberInRange(int number, int from, int to)
+void printRangeFrom1ToN_usingWhile(int N)
 {
-	return (number >= from && number <= to);
+	int counter = 0;
+
+	cout << "Range using while statement: \n";
+	while (counter < N)
+	{
+		counter++;
+		cout << counter << endl;
+	}
 }
 
-int readUntilAgeBetween(int from, int to)
+void printRangeFrom1ToN_usingDoWhile(int N)
 {
-	int age = 0;
+	int counter = 0;
+	cout << "Range using do while statement: \n";
 
 	do
 	{
-		age = readAge();
+		counter++;
+		cout << counter << endl;
 
-	} while (!validateNumberInRange(age, from, to));
-
-	return age;
+	} while (counter < N);
 }
 
-void printResult(int age)
+void printRangeFrom1ToN_usingFor(int N)
 {
-	if (validateNumberInRange(age, 18, 65))
-		cout << age << " is a valid age";
-	else
-		cout << age << " is invalid age";
+	cout << "Range using for loop statement: \n";
+
+	for (int counter = 1; counter <= N; counter++)
+		cout << counter << endl;
 }
 
 int main()
 {
-	printResult(readUntilAgeBetween(18, 45));
+	int N = readNumber();
+	printRangeFrom1ToN_usingWhile(N);
+	printRangeFrom1ToN_usingDoWhile(N);
+	printRangeFrom1ToN_usingFor(N);
+
+
 	return 0;
 }
