@@ -2,34 +2,48 @@
 #include <string>
 using namespace std;
 
-float readNumber(string message)
+enum enPrimeNotPrime { Prime = 1, NotPrime = 2};
+
+float readPositiveNumber(string message)
 {
 	float number = 0;
-	cout << message << endl;
-	cin >> number;
+	do
+	{
+		cout << message << endl;
+		cin >> number;
+	} while (number <= 0);
 
 	return number;
 }
 
-float sumNumbers()
+enPrimeNotPrime checkPrime(int number)
 {
-	int sum = 0, number = 0, counter = 1;
+	int m = round(number / 2);
 
-	do
+	for (int counter = 2; counter <= m; counter++)
 	{
-		number = readNumber("Plesae enter number " + to_string(counter));
+		if (number % counter == 0)
+			return enPrimeNotPrime::NotPrime;
+	}
 
-		if (number == -99)
-			break;
-		sum += number;
-		counter++;
-	} while (number != 99);
+	return enPrimeNotPrime::Prime;
 
-	return sum;
 }
 
+void printNumberType(int number)
+{
+	switch (checkPrime(number))
+	{
+	case enPrimeNotPrime::Prime:
+		cout << "The number is Prime\n";
+		break;
+	case enPrimeNotPrime::NotPrime:
+		cout << "The number is not prime\n";
+		break;
+	}
+}
 int main()
 {
-	cout << "Result = " << sumNumbers();
+	printNumberType(readPositiveNumber("Please enter a positive number: "));
 	return 0;
 }
