@@ -2,38 +2,44 @@
 #include <string>
 using namespace std;
 
-int readNumberInRange(int from, int to)
+int readTotalSales()
 {
-	int grade;
-	do
-	{
-		cout << "Please enter your grade between 0 and 100: \n";
-		cin >> grade;
-	} while (grade < from || grade > to);
+	int totalSales;
 
-	return grade;
+	cout << "Please enter a total sales: ";
+	cin >> totalSales;
+
+	return totalSales;
 }
 
-char getGradeLetter(int grade)
+float getComissionPercentage(float totalSales)
 {
-	if (grade >= 90)
-		return 'A';
-	else if (grade >= 80)
-		return 'B';
-	else if (grade >= 70)
-		return 'C';
-	else if (grade >= 60)
-		return 'D';
+	if (totalSales >= 1000000)
+		return 0.01;
+	else if (totalSales >= 500000)
+		return 0.02;
+	else if (totalSales >= 100000)
+		return 0.03;
+	else if (totalSales >= 50000)
+		return 0.05;
 	else
-		return 'F';
+		return 0.00;
 }
 
+float calcTotalComission(float totalSales)
+{
+	return getComissionPercentage(totalSales) * totalSales;
+}
 
 
 
 
 int main()
 {
-	cout << "Result = " << getGradeLetter(readNumberInRange(0, 100));
+	float totalSales = readTotalSales();
+
+	cout << "Commission Percentage = " << getComissionPercentage(totalSales);
+	cout << "\nTotal Comission = " << calcTotalComission(totalSales);
+
 	return 0;
 }
