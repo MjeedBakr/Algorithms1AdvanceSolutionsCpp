@@ -2,51 +2,51 @@
 #include <string>
 using namespace std;
 
-struct strucPiggyBankContent 
+enum enOperationType { Add = '+', Subtract = 'B', Multiply = '*', Divide = '/' };
+
+float readNumber(string message)
 {
-	int pennies, nickels, dimes, quarters, dollars;
-};
+	float number = 0;
+	cout << message << endl;
+	cin >> number;
 
-strucPiggyBankContent readPiggyBankContent()
-{
-	strucPiggyBankContent piggyBankContent;
-
-	cout << "Please enter total pennies: " << endl;
-	cin >> piggyBankContent.pennies;
-
-	cout << "Please enter total nickels: " << endl;
-	cin >> piggyBankContent.nickels;
-
-	cout << "Please enter total dimes: " << endl;
-	cin >> piggyBankContent.dimes;
-
-	cout << "Please enter total quarters: " << endl;
-	cin >> piggyBankContent.quarters;
-
-	cout << "Please enter total dollars: " << endl;
-	cin >> piggyBankContent.dollars;
-
-	return piggyBankContent;;
+	return number;
 }
 
-int calcTotalPennies(strucPiggyBankContent piggyBankContent)
+enOperationType readOpType()
 {
-	int totalPennies;
+	char op = '+';
 
-	totalPennies = piggyBankContent.pennies * 1
-		+ piggyBankContent.nickels * 5
-		+ piggyBankContent.dimes * 10
-		+ piggyBankContent.quarters * 25
-		+ piggyBankContent.dollars * 100;
+	cout << "Please enter poeration type ( +, -, *, /, ): ";
+	cin >> op;
 
-	return totalPennies;
+	return (enOperationType)op;
 }
+
+float calculate(float number1, float number2, enOperationType opType)
+{
+	switch (opType)
+	{
+	case enOperationType::Add:
+		return number1 + number2;
+	case enOperationType::Subtract:
+		return  number1 - number2;
+	case enOperationType::Multiply:
+		return number1 * number2;
+	case enOperationType::Divide:
+		return number1 / number2;
+	default:
+		return number1 + number2;
+	}
+}
+
 int main()
 {
-	int totalPennies = calcTotalPennies(readPiggyBankContent());
+	float number1 = readNumber("Please enter the first numberr: ");
+	float number2 = readNumber("Please enter the second number: ");
 
-	cout << endl << "Total Pennies = " << totalPennies << endl;
-	cout << endl << "Total Dollars = " << (float)totalPennies / 100 << endl;
+	enOperationType opType = readOpType();
 
+	cout << "Result = " << calculate(number1, number2, opType);
 	return 0;
 }
