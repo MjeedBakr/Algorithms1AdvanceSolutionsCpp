@@ -2,44 +2,51 @@
 #include <string>
 using namespace std;
 
-int readTotalSales()
+struct strucPiggyBankContent 
 {
-	int totalSales;
+	int pennies, nickels, dimes, quarters, dollars;
+};
 
-	cout << "Please enter a total sales: ";
-	cin >> totalSales;
+strucPiggyBankContent readPiggyBankContent()
+{
+	strucPiggyBankContent piggyBankContent;
 
-	return totalSales;
+	cout << "Please enter total pennies: " << endl;
+	cin >> piggyBankContent.pennies;
+
+	cout << "Please enter total nickels: " << endl;
+	cin >> piggyBankContent.nickels;
+
+	cout << "Please enter total dimes: " << endl;
+	cin >> piggyBankContent.dimes;
+
+	cout << "Please enter total quarters: " << endl;
+	cin >> piggyBankContent.quarters;
+
+	cout << "Please enter total dollars: " << endl;
+	cin >> piggyBankContent.dollars;
+
+	return piggyBankContent;;
 }
 
-float getComissionPercentage(float totalSales)
+int calcTotalPennies(strucPiggyBankContent piggyBankContent)
 {
-	if (totalSales >= 1000000)
-		return 0.01;
-	else if (totalSales >= 500000)
-		return 0.02;
-	else if (totalSales >= 100000)
-		return 0.03;
-	else if (totalSales >= 50000)
-		return 0.05;
-	else
-		return 0.00;
+	int totalPennies;
+
+	totalPennies = piggyBankContent.pennies * 1
+		+ piggyBankContent.nickels * 5
+		+ piggyBankContent.dimes * 10
+		+ piggyBankContent.quarters * 25
+		+ piggyBankContent.dollars * 100;
+
+	return totalPennies;
 }
-
-float calcTotalComission(float totalSales)
-{
-	return getComissionPercentage(totalSales) * totalSales;
-}
-
-
-
-
 int main()
 {
-	float totalSales = readTotalSales();
+	int totalPennies = calcTotalPennies(readPiggyBankContent());
 
-	cout << "Commission Percentage = " << getComissionPercentage(totalSales);
-	cout << "\nTotal Comission = " << calcTotalComission(totalSales);
+	cout << endl << "Total Pennies = " << totalPennies << endl;
+	cout << endl << "Total Dollars = " << (float)totalPennies / 100 << endl;
 
 	return 0;
 }
