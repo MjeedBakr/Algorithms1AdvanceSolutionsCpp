@@ -2,8 +2,6 @@
 #include <string>
 using namespace std;
 
-enum enOperationType { Add = '+', Subtract = 'B', Multiply = '*', Divide = '/' };
-
 float readNumber(string message)
 {
 	float number = 0;
@@ -13,40 +11,25 @@ float readNumber(string message)
 	return number;
 }
 
-enOperationType readOpType()
+float sumNumbers()
 {
-	char op = '+';
+	int sum = 0, number = 0, counter = 1;
 
-	cout << "Please enter poeration type ( +, -, *, /, ): ";
-	cin >> op;
-
-	return (enOperationType)op;
-}
-
-float calculate(float number1, float number2, enOperationType opType)
-{
-	switch (opType)
+	do
 	{
-	case enOperationType::Add:
-		return number1 + number2;
-	case enOperationType::Subtract:
-		return  number1 - number2;
-	case enOperationType::Multiply:
-		return number1 * number2;
-	case enOperationType::Divide:
-		return number1 / number2;
-	default:
-		return number1 + number2;
-	}
+		number = readNumber("Plesae enter number " + to_string(counter));
+
+		if (number == -99)
+			break;
+		sum += number;
+		counter++;
+	} while (number != 99);
+
+	return sum;
 }
 
 int main()
 {
-	float number1 = readNumber("Please enter the first numberr: ");
-	float number2 = readNumber("Please enter the second number: ");
-
-	enOperationType opType = readOpType();
-
-	cout << "Result = " << calculate(number1, number2, opType);
+	cout << "Result = " << sumNumbers();
 	return 0;
 }
