@@ -2,9 +2,14 @@
 #include <string>
 using namespace std;
 
-float readPositiveNumber(string message)
+struct strucTaskDuration
 {
-	float number = 0;
+	int numberOfDays, numberOfHours, numberOfMinutes, numberOfSeconds;
+};
+
+int readPositiveNumber(string message)
+{
+	int number = 0;
 	do
 	{
 		cout << message << endl;
@@ -14,32 +19,33 @@ float readPositiveNumber(string message)
 	return number;
 }
 
-float hoursToDays(float numberOfHours)
+strucTaskDuration readTaskDuration()
 {
-	return (float)numberOfHours / 24;
+	strucTaskDuration taskDuration;
+	taskDuration.numberOfDays = readPositiveNumber("Enter number of days: ");
+	taskDuration.numberOfHours = readPositiveNumber("Enter number of hours: ");
+	taskDuration.numberOfMinutes = readPositiveNumber("Enter number of minutes: ");
+	taskDuration.numberOfSeconds = readPositiveNumber("Enter number of seconds: ");
+
+	return taskDuration;
 }
 
-float hoursToWeeks(float numberOfHours)
+int taskDurationInSeconds(strucTaskDuration taskDuration)
 {
-	return (float)numberOfHours / 24 / 7;
-}
+	int durationInSeconds = 0;
 
-float daysToWeeks(float numberOfDays)
-{
-	return (float)numberOfDays / 7;
+	durationInSeconds = taskDuration.numberOfDays * 24 * 60 * 60;
+	durationInSeconds += taskDuration.numberOfHours * 60 * 60;
+	durationInSeconds += taskDuration.numberOfMinutes * 60;
+	durationInSeconds += taskDuration.numberOfSeconds;
+
+	return durationInSeconds;
 }
 
 int main()
 {
-	float numberOfHours = readPositiveNumber("Please enter the number of hours: ");
-	float numberOfDays = hoursToDays(numberOfHours);
-	float numberOfWeeks = hoursToWeeks(numberOfHours);
-
+	cout << "Task Duration In Seconds: " << taskDurationInSeconds(readTaskDuration());
 	cout << endl;
-	cout << "Total Hours = " << numberOfHours << endl;
-	cout << "Total Days = " << numberOfDays << endl;
-	cout << "Total Weeks = " << numberOfWeeks << endl;
-
 
 
 	return 0;
