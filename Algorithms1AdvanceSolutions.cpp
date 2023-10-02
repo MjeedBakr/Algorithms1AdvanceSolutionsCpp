@@ -2,56 +2,52 @@
 #include <string>
 using namespace std;
 
-struct strucTaskDuration
-{
-	int numberOfDays, numberOfHours, numberOfMinutes, numberOfSeconds;
-};
+enum enWeekDays {Sat = 1, Sun = 2, Mon = 3, Tue = 4, Wed = 5, Thu = 6, Fri = 7};
 
-int readPositiveNumber(string message)
+int readNumberInRange(string message, int start, int end)
 {
 	int number = 0;
 	do
 	{
 		cout << message << endl;
 		cin >> number;
-	} while (number <= 0);
+	} while (number < start || number > end);
 
 	return number;
 }
 
-strucTaskDuration secondsToTaskDuration(int totalSeconds)
+enWeekDays readDayOfWeek()
 {
-	strucTaskDuration taskDuration;
-	const int secondsPerDay = 24 * 60 * 60;
-	const int secondsPerHour = 60 * 60;
-	const int secondsPerMinute = 60;
-
-	int remainder = 0;
-	taskDuration.numberOfDays = floor(totalSeconds / secondsPerDay);
-	remainder = totalSeconds % secondsPerDay;
-	taskDuration.numberOfHours = floor(remainder / secondsPerHour);
-	remainder = remainder % secondsPerHour;
-	taskDuration.numberOfMinutes = floor(remainder / secondsPerMinute);
-	remainder = remainder % secondsPerMinute;
-	taskDuration.numberOfSeconds = remainder;
-
-	return taskDuration;
+	return (enWeekDays)readNumberInRange("Please enter day number: ", 1, 7);
 }
 
-void printTaskDurationDetails(strucTaskDuration taskDuration)
+string getDayOfWeek(enWeekDays day)
 {
-	cout << endl;
-	cout << taskDuration.numberOfDays << ":"
-		<< taskDuration.numberOfHours << ":"
-		<< taskDuration.numberOfMinutes << ":"
-		<< taskDuration.numberOfSeconds << endl;
+	switch (day)
+	{
+	case Sat:
+		return "Saturady";
+	case Sun:
+		return "Sunday";
+	case Mon:
+		return "Monday";
+	case Tue:
+		return "Tuesday";
+	case Wed:
+		return "Wednesday";
+	case Thu:
+		return "Thursday";
+	case Fri:
+		return "Friday";
+	default:
+		return "Invvalid Day";
+	}
 }
 
 int main()
 {
-	int totalSeconds = readPositiveNumber("Please enter the number of seconds: ");
-	printTaskDurationDetails(secondsToTaskDuration(totalSeconds));
 
+	cout << getDayOfWeek(readDayOfWeek()) << endl;
 
 	return 0;
 }
