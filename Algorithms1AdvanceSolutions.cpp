@@ -14,22 +14,31 @@ float readPositiveNumber(string message)
 	return number;
 }
 
-float totalBillAfterServiceAndTax(float totalBill)
+float hoursToDays(float numberOfHours)
 {
-	totalBill = totalBill * 1.1;  //calculate service
-	totalBill = totalBill * 1.16; //add the tax value
+	return (float)numberOfHours / 24;
+}
 
-	return totalBill;
+float hoursToWeeks(float numberOfHours)
+{
+	return (float)numberOfHours / 24 / 7;
+}
+
+float daysToWeeks(float numberOfDays)
+{
+	return (float)numberOfDays / 7;
 }
 
 int main()
 {
-	float totalBill = readPositiveNumber("Please enter the total bill: ");
+	float numberOfHours = readPositiveNumber("Please enter the number of hours: ");
+	float numberOfDays = hoursToDays(numberOfHours);
+	float numberOfWeeks = hoursToWeeks(numberOfHours);
 
 	cout << endl;
-	cout << "Total Bill = " << totalBill << endl;
-	cout << "Total Bill after service fee and sales tax = "
-		<< totalBillAfterServiceAndTax(totalBill) << endl;
+	cout << "Total Hours = " << numberOfHours << endl;
+	cout << "Total Days = " << numberOfDays << endl;
+	cout << "Total Weeks = " << numberOfWeeks << endl;
 
 
 
