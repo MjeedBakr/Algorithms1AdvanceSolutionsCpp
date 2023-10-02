@@ -19,33 +19,38 @@ int readPositiveNumber(string message)
 	return number;
 }
 
-strucTaskDuration readTaskDuration()
+strucTaskDuration secondsToTaskDuration(int totalSeconds)
 {
 	strucTaskDuration taskDuration;
-	taskDuration.numberOfDays = readPositiveNumber("Enter number of days: ");
-	taskDuration.numberOfHours = readPositiveNumber("Enter number of hours: ");
-	taskDuration.numberOfMinutes = readPositiveNumber("Enter number of minutes: ");
-	taskDuration.numberOfSeconds = readPositiveNumber("Enter number of seconds: ");
+	const int secondsPerDay = 24 * 60 * 60;
+	const int secondsPerHour = 60 * 60;
+	const int secondsPerMinute = 60;
+
+	int remainder = 0;
+	taskDuration.numberOfDays = floor(totalSeconds / secondsPerDay);
+	remainder = totalSeconds % secondsPerDay;
+	taskDuration.numberOfHours = floor(remainder / secondsPerHour);
+	remainder = remainder % secondsPerHour;
+	taskDuration.numberOfMinutes = floor(remainder / secondsPerMinute);
+	remainder = remainder % secondsPerMinute;
+	taskDuration.numberOfSeconds = remainder;
 
 	return taskDuration;
 }
 
-int taskDurationInSeconds(strucTaskDuration taskDuration)
+void printTaskDurationDetails(strucTaskDuration taskDuration)
 {
-	int durationInSeconds = 0;
-
-	durationInSeconds = taskDuration.numberOfDays * 24 * 60 * 60;
-	durationInSeconds += taskDuration.numberOfHours * 60 * 60;
-	durationInSeconds += taskDuration.numberOfMinutes * 60;
-	durationInSeconds += taskDuration.numberOfSeconds;
-
-	return durationInSeconds;
+	cout << endl;
+	cout << taskDuration.numberOfDays << ":"
+		<< taskDuration.numberOfHours << ":"
+		<< taskDuration.numberOfMinutes << ":"
+		<< taskDuration.numberOfSeconds << endl;
 }
 
 int main()
 {
-	cout << "Task Duration In Seconds: " << taskDurationInSeconds(readTaskDuration());
-	cout << endl;
+	int totalSeconds = readPositiveNumber("Please enter the number of seconds: ");
+	printTaskDurationDetails(secondsToTaskDuration(totalSeconds));
 
 
 	return 0;
