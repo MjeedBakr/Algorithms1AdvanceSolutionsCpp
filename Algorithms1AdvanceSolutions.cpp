@@ -14,22 +14,24 @@ float readPositiveNumber(string message)
 	return number;
 }
 
-float calcReminder(float totalBill, float totalCashPaid)
+float totalBillAfterServiceAndTax(float totalBill)
 {
-	return totalCashPaid - totalBill;
+	totalBill = totalBill * 1.1;  //calculate service
+	totalBill = totalBill * 1.16; //add the tax value
+
+	return totalBill;
 }
 
 int main()
 {
 	float totalBill = readPositiveNumber("Please enter the total bill: ");
-	float totalCashPaid = readPositiveNumber("Please enter total cash paid");
 
 	cout << endl;
 	cout << "Total Bill = " << totalBill << endl;
-	cout << "Total Cash Paid = " << totalCashPaid << endl;
+	cout << "Total Bill after service fee and sales tax = "
+		<< totalBillAfterServiceAndTax(totalBill) << endl;
 
-	cout << "********************\n";
-	cout << "Remainder = " << calcReminder(totalBill, totalCashPaid) << endl;
+
 
 	return 0;
 }
