@@ -2,8 +2,6 @@
 #include <string>
 using namespace std;
 
-enum enPrimeNotPrime { Prime = 1, NotPrime = 2};
-
 float readPositiveNumber(string message)
 {
 	float number = 0;
@@ -16,34 +14,22 @@ float readPositiveNumber(string message)
 	return number;
 }
 
-enPrimeNotPrime checkPrime(int number)
+float calcReminder(float totalBill, float totalCashPaid)
 {
-	int m = round(number / 2);
-
-	for (int counter = 2; counter <= m; counter++)
-	{
-		if (number % counter == 0)
-			return enPrimeNotPrime::NotPrime;
-	}
-
-	return enPrimeNotPrime::Prime;
-
+	return totalCashPaid - totalBill;
 }
 
-void printNumberType(int number)
-{
-	switch (checkPrime(number))
-	{
-	case enPrimeNotPrime::Prime:
-		cout << "The number is Prime\n";
-		break;
-	case enPrimeNotPrime::NotPrime:
-		cout << "The number is not prime\n";
-		break;
-	}
-}
 int main()
 {
-	printNumberType(readPositiveNumber("Please enter a positive number: "));
+	float totalBill = readPositiveNumber("Please enter the total bill: ");
+	float totalCashPaid = readPositiveNumber("Please enter total cash paid");
+
+	cout << endl;
+	cout << "Total Bill = " << totalBill << endl;
+	cout << "Total Cash Paid = " << totalCashPaid << endl;
+
+	cout << "********************\n";
+	cout << "Remainder = " << calcReminder(totalBill, totalCashPaid) << endl;
+
 	return 0;
 }
